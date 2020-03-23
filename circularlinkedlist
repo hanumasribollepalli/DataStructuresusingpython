@@ -1,3 +1,6 @@
+# Hello World program in Python
+    
+
 class CircularLinkedList:
     class _Node:
         __slot__='element','next'
@@ -49,13 +52,13 @@ class CircularLinkedList:
             new._next=self._head
             self._tail=new
         self._size +=1
-    def removefirst(self,e):
+    def removefirst(self):
         ele= self._head._element
         self._tail._next=self._head._next
         self._head=self._head._next
         self._size -=1
         return ele
-    def removelast(self,e):
+    def removelast(self):
         ele=self._tail._element
         thead=self._head
         i=0
@@ -81,7 +84,7 @@ class CircularLinkedList:
         thead= self._head
         i=0
         while i< len(self):
-            print(thead._element, end='--->')
+            print(thead._element, end='-->')
             thead=thead._next
             i+=1
         print()
@@ -92,4 +95,10 @@ a= CircularLinkedList()
 a.addlast(2)
 a.addlast(3)
 a.addlast(4)
+a.addlast(5)
+
+a.addfirst(7)
+a.removefirst()
+a.removelast()
+a.removeany(2)
 a.display()
