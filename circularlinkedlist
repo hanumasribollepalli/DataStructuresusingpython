@@ -1,0 +1,95 @@
+class CircularLinkedList:
+    class _Node:
+        __slot__='element','next'
+        def __init__(self,element,next):
+            self._element=element
+            self._next=next
+    def __init__(self):
+        self._head=None
+        self._tail=None
+        self._size=0
+    def __len__(self):
+        return self._size
+    def isempty(self):
+        return self._size==0
+    def addfirst(self,e):
+        new=self._Node(e,None)
+        if self.isempty():
+            self._head=new
+            self._tail=new
+            new._next= new
+        else:
+            new._next=self._head
+            self._tail._next=new
+            self._head= new
+        self._size+= 1
+    def addany(self,e,pos):
+        new = self._Node(e, None)
+        if self.isempty():
+            self._head=new
+            self._tail=new
+            new._next= new
+        else:
+            thead= self._head
+            i=0
+            while i<pos-1 :
+                thead=thead._next
+                i=i+1
+            thead._next=new
+            new._next= thead._next._next
+        self._size +=1
+    def addlast(self,e):
+        new=self._Node(e,None)
+        if self.isempty():
+            self._head=new
+            self._tail=new
+            new._next= new
+        else:
+            self._tail._next= new
+            new._next=self._head
+            self._tail=new
+        self._size +=1
+    def removefirst(self,e):
+        ele= self._head._element
+        self._tail._next=self._head._next
+        self._head=self._head._next
+        self._size -=1
+        return ele
+    def removelast(self,e):
+        ele=self._tail._element
+        thead=self._head
+        i=0
+        while i<len(self)-2 :
+            thead._next=self._head
+            self._tail= thead
+        self._size -=1
+        return ele
+    def removeany(self,pos):
+        if self.isempty():
+            raise 'expection'
+        else:
+            thead=self._head
+            i=0
+            while i<pos-1 :
+                thead=thead._next
+                i=i+1
+            val=thead._next._element
+            thead._next=thead._next._next
+        self._size -=1
+        return val
+    def display(self):
+        thead= self._head
+        i=0
+        while i< len(self):
+            print(thead._element, end='--->')
+            thead=thead._next
+            i+=1
+        print()
+    
+
+
+a= CircularLinkedList()
+a.addlast(2)
+a.addlast(3)
+a.addlast(4)
+a.display()
