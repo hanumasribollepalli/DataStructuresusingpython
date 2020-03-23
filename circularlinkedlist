@@ -87,16 +87,13 @@ class CircularLinkedList:
             i+=1
         print()
     
-
-
 a= CircularLinkedList()
 a.addlast(2)
 a.addlast(3)
-a.addlast(4)
-a.addlast(5)
 
 a.addfirst(7)
 a.removefirst()
 a.removelast()
-a.removeany(2)
+a.removeany(0)
+a.addfirst(1)
 a.display()
